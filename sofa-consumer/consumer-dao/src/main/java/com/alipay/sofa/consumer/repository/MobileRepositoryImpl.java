@@ -5,6 +5,8 @@ import com.alipay.sofa.consumer.dao.mapper.ConsumerMobileMapper;
 import com.alipay.sofa.isle.sample.MobileDubboService;
 import com.alipay.sofa.isle.sample.vo.MobileVO;
 import com.alipay.sofa.runtime.api.annotation.SofaService;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +20,8 @@ import javax.annotation.Resource;
  */
 //@Component("mobileRepository")
 //@SofaService(uniqueId = "mobileJvmService", interfaceType = MobileDubboService.class)
+@NoArgsConstructor
+@AllArgsConstructor
 public class MobileRepositoryImpl implements MobileDubboService {
 
     @Resource
