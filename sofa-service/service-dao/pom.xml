@@ -21,6 +21,16 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.alipay.sofa</groupId>
+            <artifactId>runtime-sofa-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.miaowen.demo</groupId>
+            <artifactId>service-facade</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
