@@ -16,8 +16,8 @@ import javax.annotation.Resource;
  * @author miaowen
  * @since 2020/12/14 11:03
  */
-//@Component("mobileRepository")
-//@SofaService(uniqueId = "mobileJvmService", interfaceType = MobileDubboService.class)
+@Component("mobileRepository")
+@SofaService(uniqueId = "mobileJvmService", interfaceType = MobileDubboService.class)
 public class MobileRepositoryImpl implements MobileDubboService {
 
     @Resource
