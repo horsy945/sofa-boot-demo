@@ -10,7 +10,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  * MapperScan 要放在Root工程的 Application 中扫描，不然只有一个生效
  * @author miaowen 18/5/5
  */
-//@MapperScan({"com.alipay.sofa.consumer.dao.mapper", "com.alipay.sofa.dao.mapper"})
+@MapperScan({"com.alipay.sofa.consumer.dao.mapper", "com.alipay.sofa.dao.mapper"})
 @SpringBootApplication
 public class ApplicationRun {
     public static void main(String[] args) {
