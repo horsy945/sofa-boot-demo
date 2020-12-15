@@ -1,4 +1,4 @@
-package com.alipay.sofa.isle.sample.config;
+package com.alipay.sofa.config;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;
