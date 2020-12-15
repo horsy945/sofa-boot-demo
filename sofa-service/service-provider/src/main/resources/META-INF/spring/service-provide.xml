@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:sofa="http://sofastack.io/schema/sofaboot" xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://sofastack.io/schema/sofaboot http://sofastack.io/schema/sofaboot.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd"
+       default-autowire="byName">
+    <bean id="sampleJvmService" class="com.alipay.sofa.isle.sample.SampleJvmServiceImpl">
+        <property name="message" value="Hello, jvm service xml implementation."/>
+    </bean>
+
+    <sofa:service ref="sampleJvmService" interface="com.alipay.sofa.isle.sample.SampleJvmService" unique-id="sampleJvmServiceXml">
+        <sofa:binding.jvm/>
+    </sofa:service>
+
+    <bean id="sampleJvmServiceAnnotation" class="com.alipay.sofa.isle.sample.SampleJvmServiceAnnotationImpl"/>
+
+    <bean id="publishServiceWithClient" class="com.alipay.sofa.isle.sample.PublishServiceWithClient" init-method="init"/>
+
+    <dubbo:service ref="mobileDubboService" interface="com.alipay.sofa.isle.sample.MobileDubboService"/>
+
+</beans>
