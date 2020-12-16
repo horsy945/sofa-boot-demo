@@ -9,11 +9,10 @@ import org.springframework.beans.BeanUtils;
 import javax.annotation.Resource;
 
 /**
+ * 这是一个jvm 服务样例
  * @author miaowen
  * @since 2020/12/3 11:55
  */
-//@Component("mobileDubboService")
-//@SofaService(uniqueId = "mobileServiceJvm", interfaceType = MobileDubboService.class)
 public class SampleSofaJvmServiceImpl implements SampleSofaJvmService {
     @Resource
     private MobileMapper mobileMapper;

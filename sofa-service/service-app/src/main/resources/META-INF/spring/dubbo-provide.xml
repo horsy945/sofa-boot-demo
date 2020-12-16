@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:sofa="http://sofastack.io/schema/sofaboot" xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://sofastack.io/schema/sofaboot http://sofastack.io/schema/sofaboot.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd"
+       default-autowire="byName">
+
+    <!-- 动态的暴露dubbo 服务，需要在xml 中配置，bean 定义要和 dubbo service 注解放在一起 -->
+    <bean id="sampleSofaJvmService" class="com.alipay.sofa.isle.sample.service.impl.SampleSofaJvmServiceImpl"/>
+    <dubbo:service ref="sampleSofaJvmService" interface="com.alipay.sofa.isle.sample.SampleSofaJvmService"/>
+
+</beans>
