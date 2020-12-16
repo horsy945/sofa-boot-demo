@@ -4,20 +4,19 @@ import com.alipay.sofa.consumer.dao.dataobject.MobileDO;
 import com.alipay.sofa.consumer.dao.mapper.ConsumerMobileMapper;
 import com.alipay.sofa.isle.sample.MobileDubboService;
 import com.alipay.sofa.isle.sample.vo.MobileVO;
-import com.alipay.sofa.runtime.api.annotation.SofaService;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.BeanUtils;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 
 /**
- * todo
- * 直接在类上加注解方式发布 sofa-service Component 注解和 SofaService 注解都没有被扫描
+ * 暴露一个服务，通过 @Configuration 方式
  * @author miaowen
  * @since 2020/12/14 11:03
  */
-//@Component("mobileRepository")
-//@SofaService(uniqueId = "mobileJvmService", interfaceType = MobileDubboService.class)
+@NoArgsConstructor
+@AllArgsConstructor
 public class MobileRepositoryImpl implements MobileDubboService {
 
     @Resource

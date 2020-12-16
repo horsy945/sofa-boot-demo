@@ -13,12 +13,12 @@ import org.springframework.context.annotation.Configuration;
  * @author miaowen
  * @since 2020/12/11 11:42
  */
-//@Configuration
+@Configuration
 @Slf4j
 public class SofaConfig {
 
-    @Reference
-    private MobileDubboService mobileDubboService;
+//    @Reference
+//    private MobileDubboService mobileDubboService;
 
 //    @Bean
 //    public JvmServiceConsumer jvmServiceConsumer(@SofaReference(uniqueId = "sampleJvmServiceXml") SampleJvmService sampleJvmService){

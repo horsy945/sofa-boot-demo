@@ -6,10 +6,6 @@
             http://sofastack.io/schema/sofaboot http://sofastack.io/schema/sofaboot.xsd"
        default-autowire="byName">
 
-    <bean id="mobileRepository" class="com.alipay.sofa.consumer.repository.MobileRepositoryImpl"/>
-
-    <sofa:service ref="mobileRepository" interface="com.alipay.sofa.isle.sample.MobileDubboService" unique-id="mobileJvmService">
-        <sofa:binding.jvm/>
-    </sofa:service>
+    <!-- 这个文件暂时无用 -->
 
 </beans>

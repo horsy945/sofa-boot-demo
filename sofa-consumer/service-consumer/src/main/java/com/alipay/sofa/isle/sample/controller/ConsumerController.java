@@ -40,8 +40,7 @@ public class ConsumerController {
     @Resource
     private JvmServiceConsumer jvmServiceConsumer;
 
-//    @Resource(name = "mobileJvmService")
-    @SofaReference(uniqueId = "mobileServiceJvm")
+    @Resource(name = "mobileJvmService")
     private MobileDubboService mobileJvmService;
 
     @SofaReference(uniqueId = "mobileJvmService")
