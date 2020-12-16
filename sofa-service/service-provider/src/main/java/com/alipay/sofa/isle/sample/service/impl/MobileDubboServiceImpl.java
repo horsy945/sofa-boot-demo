@@ -1,15 +1,10 @@
 package com.alipay.sofa.isle.sample.service.impl;
 
-import com.alipay.sofa.dao.dataobject.MobileDO;
-import com.alipay.sofa.dao.mapper.MobileMapper;
 import com.alipay.sofa.isle.sample.MobileDubboService;
 import com.alipay.sofa.isle.sample.vo.MobileVO;
 import com.alipay.sofa.runtime.api.annotation.SofaReference;
 import com.alipay.sofa.runtime.api.annotation.SofaService;
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.Resource;
 
 /**
  * @author miaowen

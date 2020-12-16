@@ -1,13 +1,12 @@
 package com.alipay.sofa.isle.sample.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.alipay.sofa.dao.dataobject.MobileDO;
-import com.alipay.sofa.dao.mapper.MobileMapper;
+import com.alipay.sofa.isle.sample.MobileDubboService;
+import com.alipay.sofa.isle.sample.vo.MobileVO;
+import com.alipay.sofa.runtime.api.annotation.SofaReference;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.annotation.Resource;
 
 /**
  * @author miaowen
@@ -16,8 +15,8 @@ import javax.annotation.Resource;
 @RestController
 public class ProviderController {
 
-    @Resource
-    private MobileMapper mobileMapper;
+    @SofaReference(uniqueId = "mobileJvmDao")
+    private MobileDubboService mobileDubboService;
 
     @RequestMapping("/provider/test")
     public String providerRest(){
@@ -26,9 +25,11 @@ public class ProviderController {
 
     @RequestMapping("/provider/mobile")
     public String queryMobile(@RequestParam("mobile") String mobile){
-        MobileDO mobileDO = mobileMapper.selectByPhone(mobile);
-        if (null != mobileDO){
-            return JSON.toJSONString(mobileDO);
+
+        MobileVO mobileVO = mobileDubboService.getMobileVo(mobile);
+
+        if (null != mobileVO){
+            return JSON.toJSONString(mobileVO);
         }
         else {
             return "mobile not found";
