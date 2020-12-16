@@ -1,12 +1,13 @@
 package com.alipay.sofa.isle.sample.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.alipay.sofa.isle.sample.MobileDubboService;
+import com.alipay.sofa.isle.sample.SampleSofaJvmService;
 import com.alipay.sofa.isle.sample.vo.MobileVO;
-import com.alipay.sofa.runtime.api.annotation.SofaReference;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * @author miaowen
@@ -15,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ProviderController {
 
-    @SofaReference(uniqueId = "mobileJvmDao")
-    private MobileDubboService mobileDubboService;
+    @Resource(name = "sampleSofaJvmService")
+    private SampleSofaJvmService sampleJvmService;
 
     @RequestMapping("/provider/test")
     public String providerRest(){
@@ -26,7 +27,7 @@ public class ProviderController {
     @RequestMapping("/provider/mobile")
     public String queryMobile(@RequestParam("mobile") String mobile){
 
-        MobileVO mobileVO = mobileDubboService.getMobileVo(mobile);
+        MobileVO mobileVO = sampleJvmService.getMobileVo(mobile);
 
         if (null != mobileVO){
             return JSON.toJSONString(mobileVO);

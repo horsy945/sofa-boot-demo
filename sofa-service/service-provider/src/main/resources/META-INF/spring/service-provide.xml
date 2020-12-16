@@ -5,18 +5,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
             http://sofastack.io/schema/sofaboot http://sofastack.io/schema/sofaboot.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd"
        default-autowire="byName">
-    <bean id="sampleJvmService" class="com.alipay.sofa.isle.sample.SampleJvmServiceImpl">
-        <property name="message" value="Hello, jvm service xml implementation."/>
-    </bean>
 
-    <sofa:service ref="sampleJvmService" interface="com.alipay.sofa.isle.sample.SampleJvmService" unique-id="sampleJvmServiceXml">
-        <sofa:binding.jvm/>
-    </sofa:service>
-
-    <bean id="sampleJvmServiceAnnotation" class="com.alipay.sofa.isle.sample.SampleJvmServiceAnnotationImpl"/>
-
-    <bean id="publishServiceWithClient" class="com.alipay.sofa.isle.sample.PublishServiceWithClient" init-method="init"/>
-
-    <dubbo:service ref="mobileDubboService" interface="com.alipay.sofa.isle.sample.MobileDubboService"/>
+    <!-- 动态的暴露dubbo 服务，需要在xml 中配置，bean 定义要和 dubbo service 注解放在一起 -->
+    <bean id="sampleDubboService" class="com.alipay.sofa.isle.sample.service.impl.SampleDubboServiceImpl"/>
+    <dubbo:service ref="sampleDubboService" interface="com.alipay.sofa.isle.sample.SampleDubboService"/>
 
 </beans>

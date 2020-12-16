@@ -16,13 +16,13 @@
  */
 package com.alipay.sofa.isle.sample;
 
+import com.alibaba.fastjson.JSON;
+import com.alipay.sofa.isle.sample.vo.MobileVO;
 import com.alipay.sofa.runtime.api.annotation.SofaReference;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.Resource;
 
 /**
  * @author xuanbei 18/5/5
@@ -33,12 +33,13 @@ import javax.annotation.Resource;
 public class JvmServiceConsumer  {
 
     @Setter
-//    @Resource
-    @SofaReference(uniqueId = "sampleJvmServiceXml")
-    private SampleJvmService sampleJvmService;
+    @SofaReference(uniqueId = "mobileServiceJvm")
+    private SampleSofaJvmService sampleJvmService;
 
     public String init() {
-        return sampleJvmService.message();
+        MobileVO mobileVO = sampleJvmService.getMobileVo("17706520000");
+
+        return null != mobileVO ? JSON.toJSONString(mobileVO) : "17706520000 手机号没找到 ";
     }
 
 }

@@ -17,12 +17,13 @@
 package com.alipay.sofa.isle.sample.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.alipay.sofa.consumer.dao.dataobject.MobileDO;
+import com.alipay.sofa.consumer.dao.mapper.ConsumerMobileMapper;
 import com.alipay.sofa.isle.sample.JvmServiceConsumer;
-import com.alipay.sofa.isle.sample.MobileDubboService;
+import com.alipay.sofa.isle.sample.SampleDubboService;
+import com.alipay.sofa.isle.sample.SampleSofaJvmService;
 import com.alipay.sofa.isle.sample.vo.MobileVO;
 import com.alipay.sofa.runtime.api.annotation.SofaReference;
-import lombok.Setter;
-import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,24 +41,28 @@ public class ConsumerController {
     @Resource
     private JvmServiceConsumer jvmServiceConsumer;
 
-    @Resource(name = "mobileJvmService")
-    private MobileDubboService mobileJvmService;
+    @Resource(name = "sampleDubboService")
+    private SampleDubboService sampleDubboService;
 
-    @SofaReference(uniqueId = "mobileJvmService")
-    private MobileDubboService DaoJvmService;
+    @Resource
+    private ConsumerMobileMapper consumerMobileMapper;
 
-    @Setter
-    @Reference
-    private MobileDubboService mobileDubboService;
+    @SofaReference(uniqueId = "mobileServiceJvm")
+    private SampleSofaJvmService sampleSofaJvmService;
 
     @RequestMapping("/consumer/say")
     public String consumerSay() throws IOException {
         return jvmServiceConsumer.init();
     }
 
-    @RequestMapping("/consumer/mobile")
+    /**
+     * consumer 调service 提供的jvm 服务
+     * @param mobile
+     * @return
+     */
+    @RequestMapping("/consumer/jvm/mobile")
     public String queryMobile(@RequestParam("mobile") String mobile) {
-        MobileVO mobileVO = mobileJvmService.getMobileVo(mobile);
+        MobileVO mobileVO = sampleSofaJvmService.getMobileVo(mobile);
         if (null != mobileVO) {
             return JSON.toJSONString(mobileVO);
         } else {
@@ -65,9 +70,14 @@ public class ConsumerController {
         }
     }
 
-    @RequestMapping("/dubbo/mobile")
+    /**
+     * consumer 调 service 提供的dubbo 服务
+     * @param mobile
+     * @return
+     */
+    @RequestMapping("/consumer/dubbo/mobile")
     public String queryDubboMobile(@RequestParam("mobile") String mobile){
-        MobileVO mobileVO = mobileDubboService.getMobileVo(mobile);
+        MobileVO mobileVO = sampleDubboService.getMobileVo(mobile);
 
         if (null != mobileVO){
             return JSON.toJSONString(mobileVO);
@@ -77,12 +87,16 @@ public class ConsumerController {
         }
     }
 
-    @RequestMapping("/dao/mobile")
+    /**
+     * consumer 直接查数据库
+     * @param mobile
+     * @return
+     */
+    @RequestMapping("/consumer/dao/mobile")
     public String queryDaoMobile(@RequestParam("mobile") String mobile){
-        MobileVO mobileVO = DaoJvmService.getMobileVo(mobile);
-
-        if (null != mobileVO){
-            return JSON.toJSONString(mobileVO);
+        MobileDO mobileDO = consumerMobileMapper.selectByPhone(mobile);
+        if (null != mobileDO){
+            return JSON.toJSONString(mobileDO);
         }
         else {
             return "mobile not found";

@@ -44,4 +44,9 @@ public class MobileVO implements Serializable {
      * 修改时间
      */
     private Date gmtModified;
+
+    public MobileVO(String phone, String name) {
+        this.phone = phone;
+        this.name = name;
+    }
 }

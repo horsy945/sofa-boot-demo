@@ -1,22 +1,19 @@
-package com.alipay.sofa.repository;
+package com.alipay.sofa.isle.sample.service.impl;
 
 import com.alipay.sofa.dao.dataobject.MobileDO;
 import com.alipay.sofa.dao.mapper.MobileMapper;
-import com.alipay.sofa.isle.sample.MobileDubboService;
+import com.alipay.sofa.isle.sample.SampleDubboService;
 import com.alipay.sofa.isle.sample.vo.MobileVO;
 import org.springframework.beans.BeanUtils;
 
 import javax.annotation.Resource;
 
 /**
- * todo
- * 直接在类上加注解方式发布 sofa-service Component 注解和 SofaService 注解都没有被扫描
+ * dubbo 服务暴露sample，服务暴露配置在 service-provide.xml
  * @author miaowen
- * @since 2020/12/14 11:03
+ * @since 2020/12/16 15:26
  */
-//@Component("mobileRepository")
-//@SofaService(uniqueId = "mobileJvmService", interfaceType = MobileDubboService.class)
-public class MobileServiceRepositoryImpl implements MobileDubboService {
+public class SampleDubboServiceImpl implements SampleDubboService {
 
     @Resource
     private MobileMapper mobileMapper;
@@ -28,6 +25,7 @@ public class MobileServiceRepositoryImpl implements MobileDubboService {
         if (null == mobileDO) {
             return null;
         }
+
         MobileVO result = new MobileVO();
         BeanUtils.copyProperties(mobileDO, result);
         return result;

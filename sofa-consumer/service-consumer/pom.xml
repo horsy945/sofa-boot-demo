@@ -16,6 +16,12 @@
             <groupId>com.miaowen.demo</groupId>
             <artifactId>service-facade</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.miaowen.demo</groupId>
+            <artifactId>consumer-dao</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>com.alipay.sofa</groupId>
             <artifactId>runtime-sofa-boot-starter</artifactId>

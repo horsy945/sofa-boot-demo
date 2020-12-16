@@ -22,4 +22,6 @@
 <!--        <property name="sampleJvmService" ref="sampleJvmService"/>-->
 <!--    </bean>-->
 
+<!--    <dubbo:reference id="sampleJvmService" interface="com.alipay.sofa.isle.sample.SampleJvmService" />-->
+
 </beans>

@@ -16,13 +16,17 @@
  */
 package com.alipay.sofa.isle.sample.controller;
 
-import java.io.IOException;
-
+import com.alibaba.fastjson.JSON;
+import com.alipay.sofa.isle.sample.SampleDubboService;
+import com.alipay.sofa.isle.sample.SampleSofaJvmService;
+import com.alipay.sofa.isle.sample.vo.MobileVO;
+import com.alipay.sofa.runtime.api.annotation.SofaReference;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.alipay.sofa.isle.sample.SampleJvmService;
-import com.alipay.sofa.runtime.api.annotation.SofaReference;
+import javax.annotation.Resource;
+import java.io.IOException;
 
 /**
  * @author xuanbei
@@ -30,27 +34,45 @@ import com.alipay.sofa.runtime.api.annotation.SofaReference;
  */
 @RestController
 public class TestController {
-    @SofaReference
-    private SampleJvmService sampleJvmService;
+    @SofaReference(uniqueId = "mobileServiceJvm")
+    private SampleSofaJvmService sampleSofaJvmService;
 
-    @SofaReference(uniqueId = "annotationImpl")
-    private SampleJvmService sampleJvmServiceAnnotationImpl;
+    @Resource(name = "sampleDubboService")
+    private SampleDubboService sampleDubboService;
 
-    @SofaReference(uniqueId = "serviceClientImpl")
-    private SampleJvmService sampleJvmServiceClientImpl;
+    @SofaReference(uniqueId = "consumerJvm")
+    private SampleSofaJvmService sampleClientSofaJvmService;
 
-    @RequestMapping("/serviceWithoutUniqueId")
-    public String serviceWithoutUniqueId() throws IOException {
-        return sampleJvmService.message();
+
+    @RequestMapping("/root/jvm/mobile")
+    public String rootJvmMobile(@RequestParam("mobile") String mobile) throws IOException {
+        MobileVO mobileVO = sampleSofaJvmService.getMobileVo(mobile);
+        if (null != mobileVO) {
+            return JSON.toJSONString(mobileVO);
+        } else {
+            return "mobile not found";
+        }
     }
 
-    @RequestMapping("/annotationImplService")
-    public String annotationImplService() throws IOException {
-        return sampleJvmServiceAnnotationImpl.message();
+    @RequestMapping("/root/dubbo/mobile")
+    public String annotationImplService(@RequestParam("mobile") String mobile) throws IOException {
+        MobileVO mobileVO = sampleDubboService.getMobileVo(mobile);
+
+        if (null != mobileVO){
+            return JSON.toJSONString(mobileVO);
+        }
+        else {
+            return "mobile not found";
+        }
     }
 
-    @RequestMapping("/serviceClientImplService")
-    public String serviceClientImplService() throws IOException {
-        return sampleJvmServiceClientImpl.message();
+    @RequestMapping("/root/consumer/mobile")
+    public String serviceClientImplService(@RequestParam("mobile") String mobile) throws IOException {
+        MobileVO mobileVO = sampleClientSofaJvmService.getMobileVo(mobile);
+        if (null != mobileVO) {
+            return JSON.toJSONString(mobileVO);
+        } else {
+            return "mobile not found";
+        }
     }
 }

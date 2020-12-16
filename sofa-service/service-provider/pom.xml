@@ -74,5 +74,9 @@
             <artifactId>zookeeper</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.miaowen.demo</groupId>
+            <artifactId>service-dao</artifactId>
+        </dependency>
     </dependencies>
 </project>
