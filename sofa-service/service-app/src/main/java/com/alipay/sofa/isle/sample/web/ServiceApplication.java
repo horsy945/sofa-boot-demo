@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication(scanBasePackages = {"com.alipay"})
-@ImportResource(locations = {"classpath:META-INF/spring/dubbo-provide.xml"})
+@ImportResource(locations = {"classpath:META-INF/spring/dubbo-provide-app.xml", "classpath:META-INF/spring/service-provide.xml"})
 public class ServiceApplication {
 
     public static void main(String[] args) {

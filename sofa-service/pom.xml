@@ -161,7 +161,11 @@
                     </exclusion>
                 </exclusions>
                 <groupId>org.apache.zookeeper</groupId>
+                <!-- 用本地内存zookeeper 的依赖版本，测试用 -->
                 <version>3.5.4-beta</version>
+                <!--  不用本地内存zookeeper 时用这个依赖
+                <version>3.4.8</version>
+                -->
             </dependency>
         </dependencies>
     </dependencyManagement>
