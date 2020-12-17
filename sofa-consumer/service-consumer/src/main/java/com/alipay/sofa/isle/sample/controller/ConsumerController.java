@@ -23,7 +23,6 @@ import com.alipay.sofa.isle.sample.JvmServiceConsumer;
 import com.alipay.sofa.isle.sample.SampleDubboService;
 import com.alipay.sofa.isle.sample.SampleSofaJvmService;
 import com.alipay.sofa.isle.sample.vo.MobileVO;
-import com.alipay.sofa.runtime.api.annotation.SofaReference;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,7 +46,7 @@ public class ConsumerController {
     @Resource
     private ConsumerMobileMapper consumerMobileMapper;
 
-    @SofaReference(uniqueId = "mobileServiceJvm")
+    @Resource(name = "sampleJvmService")
     private SampleSofaJvmService sampleSofaJvmService;
 
     @RequestMapping("/consumer/say")

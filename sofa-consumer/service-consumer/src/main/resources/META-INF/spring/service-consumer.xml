@@ -7,21 +7,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
             http://sofastack.io/schema/sofaboot http://sofastack.io/schema/sofaboot.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd"
        default-autowire="byName">
-    <!-- 单jvm 运行模式 -->
-<!--    <context:component-scan base-package="com.alipay"/>-->
 
-<!--    <aop:aspectj-autoproxy proxy-target-class="true"/>-->
-
-<!--    <sofa:reference id="sampleJvmService" interface="com.alipay.sofa.isle.sample.SampleJvmService">-->
-<!--        <sofa:binding.jvm/>-->
-<!--    </sofa:reference>-->
-
-<!--    <dubbo:reference id="mobileDubboService" interface="com.alipay.sofa.isle.sample.MobileDubboService"/>-->
-
-<!--    <bean id="jvmServiceConsumer" name="jvmServiceConsumer" class="com.alipay.sofa.isle.sample.JvmServiceConsumer" init-method="init" sofa:async-init="true">-->
-<!--        <property name="sampleJvmService" ref="sampleJvmService"/>-->
-<!--    </bean>-->
-
-<!--    <dubbo:reference id="sampleJvmService" interface="com.alipay.sofa.isle.sample.SampleJvmService" />-->
 
 </beans>

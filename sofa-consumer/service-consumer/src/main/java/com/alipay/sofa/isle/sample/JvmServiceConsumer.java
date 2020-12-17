@@ -18,22 +18,17 @@ package com.alipay.sofa.isle.sample;
 
 import com.alibaba.fastjson.JSON;
 import com.alipay.sofa.isle.sample.vo.MobileVO;
-import com.alipay.sofa.runtime.api.annotation.SofaReference;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
 
 /**
  * @author xuanbei 18/5/5
  */
-@AllArgsConstructor
-@NoArgsConstructor
 @Component
 public class JvmServiceConsumer  {
 
-    @Setter
-    @SofaReference(uniqueId = "mobileServiceJvm")
+    @Resource(name = "sampleJvmService")
     private SampleSofaJvmService sampleJvmService;
 
     public String init() {
