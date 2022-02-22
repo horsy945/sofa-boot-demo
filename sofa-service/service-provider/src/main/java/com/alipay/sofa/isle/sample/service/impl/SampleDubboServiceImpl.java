@@ -4,6 +4,7 @@ import com.alipay.sofa.dao.dataobject.MobileDO;
 import com.alipay.sofa.dao.mapper.MobileMapper;
 import com.alipay.sofa.isle.sample.SampleDubboService;
 import com.alipay.sofa.isle.sample.vo.MobileVO;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 
 import javax.annotation.Resource;
@@ -34,6 +35,7 @@ public class SampleDubboServiceImpl implements SampleDubboService {
         int small = 1;
         int large = 999;
         BeanUtils.copyProperties(mobileDO, result);
+        log.info("small = " + small);
         return result;
     }
 }
