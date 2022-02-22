@@ -26,6 +26,8 @@ public class SampleDubboServiceImpl implements SampleDubboService {
             return null;
         }
 
+        int task = 1000;
+        task += 11;
         MobileVO result = new MobileVO();
         BeanUtils.copyProperties(mobileDO, result);
         return result;
