@@ -13,6 +13,7 @@ import javax.annotation.Resource;
  * @author miaowen
  * @since 2020/12/16 15:26
  */
+@Slf4j
 public class SampleDubboServiceImpl implements SampleDubboService {
 
     @Resource
@@ -27,6 +28,9 @@ public class SampleDubboServiceImpl implements SampleDubboService {
         }
 
         MobileVO result = new MobileVO();
+        long user = 100;
+        user = user + 1;
+
         BeanUtils.copyProperties(mobileDO, result);
         return result;
     }
