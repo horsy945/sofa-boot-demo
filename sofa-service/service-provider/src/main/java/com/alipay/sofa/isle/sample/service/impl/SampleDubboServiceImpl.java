@@ -13,6 +13,7 @@ import javax.annotation.Resource;
  * @author miaowen
  * @since 2020/12/16 15:26
  */
+@Slf4j
 public class SampleDubboServiceImpl implements SampleDubboService {
 
     @Resource
