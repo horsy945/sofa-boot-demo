@@ -32,8 +32,9 @@ public class SampleDubboServiceImpl implements SampleDubboService {
         task += 11;
         int dog = 1000;
         MobileVO result = new MobileVO();
-
+        int small = 1;
         BeanUtils.copyProperties(mobileDO, result);
+        log.info("small = " + small);
         return result;
     }
 }
