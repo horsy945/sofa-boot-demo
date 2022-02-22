@@ -27,6 +27,8 @@ public class SampleDubboServiceImpl implements SampleDubboService {
             return null;
         }
 
+        int task = 1000;
+        task += 11;
         MobileVO result = new MobileVO();
         long user = 100;
         user = user + 1;
